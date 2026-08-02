@@ -16,6 +16,10 @@ export default function Projects() {
 
   useEffect(() => {
     document.body.style.overflow = selected ? 'hidden' : ''
+
+    return () => {
+      document.body.style.overflow = ''
+    }
   }, [selected])
 
   return (
@@ -23,20 +27,25 @@ export default function Projects() {
       <section className="page-hero">
         <div className="container">
           <span className="eyebrow">Our Work</span>
+
           <h1 className="page-hero-heading">
             PROJECTS THAT
             <br />
             MAKE AN IMPACT.
           </h1>
+
           <p className="page-hero-sub">
-            A selection of print, brand, advertising and exhibition work produced end-to-end by
-            our studio and press floor.
+            A selection of print, brand, advertising and exhibition work produced
+            end-to-end by our studio and press floor.
           </p>
         </div>
       </section>
 
-      <div className="container">
-        <div className="filters reveal">
+      {/* ضفنا px-4 ليكون فيه مسافة هوائية من الجنب على الموبايل */}
+      <div className="container px-4 sm:px-0">
+
+        {/* ضفنا mb-12 ليكون فيه مسافة (باديغ) بين الفلاتر والكروت */}
+        <div className="filters reveal mb-12">
           {categories.map((c) => (
             <button
               key={c}
@@ -48,18 +57,32 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="projects-grid">
+        {/* ضفنا gap-6 ليكون فيه مسافة بين كل كارت والتاني في الشبكة */}
+        <div className="projects-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((p, i) => (
-            <div key={p.id} onClick={() => setSelected(p)}>
-              <ProjectCard {...p} delayClass={`reveal-delay-${(i % 4) + 1}`} />
+            <div
+              key={p.id}
+              onClick={() => setSelected(p)}
+              className="w-full aspect-[4/3] flex flex-col overflow-hidden cursor-pointer"
+            >
+              <ProjectCard
+                {...p}
+                delayClass={`reveal-delay-${(i % 4) + 1}`}
+              />
             </div>
           ))}
         </div>
       </div>
 
       {selected && (
-        <div className="modal-backdrop" onClick={() => setSelected(null)}>
-          <div className="modal-panel" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="modal-backdrop"
+          onClick={() => setSelected(null)}
+        >
+          <div
+            className="modal-panel"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               className="modal-close"
               onClick={() => setSelected(null)}
@@ -67,16 +90,36 @@ export default function Projects() {
             >
               <X size={20} />
             </button>
-            <img className="modal-image" src={selected.image} alt="" />
+
+            <img
+              className="modal-image"
+              src={selected.image}
+              alt={selected.title}
+            />
+
             <div className="modal-body">
-              <span className="eyebrow">{selected.category}</span>
-              <h3 className="modal-title" style={{ marginTop: 14 }}>
+              <span className="eyebrow">
+                {selected.category}
+              </span>
+
+              <h3
+                className="modal-title"
+                style={{ marginTop: 14 }}
+              >
                 {selected.title}
               </h3>
-              <p className="text-mist" style={{ lineHeight: 1.7, fontSize: 15.5 }}>
-                A full production run for {selected.title.toLowerCase()}, covering concept
-                development, material selection and on-site delivery — handled start to finish
-                by the Easy Group team.
+
+              <p
+                className="text-mist"
+                style={{
+                  lineHeight: 1.7,
+                  fontSize: 15.5,
+                }}
+              >
+                A full production run for{' '}
+                {selected.title.toLowerCase()}, covering concept
+                development, material selection and on-site delivery —
+                handled start to finish by the Easy Group team.
               </p>
             </div>
           </div>
