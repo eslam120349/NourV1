@@ -13,8 +13,14 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const location = useLocation()
 
+  // التعديل هنا: منع تأثير السكرول في الموبايل
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => {
+      // فقط لو عرض الشاشة أكبر من 768px (يعني مش موبايل)، نغير حالة الـ scrolled
+      if (window.innerWidth >= 768) {
+        setScrolled(window.scrollY > 24)
+      }
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)

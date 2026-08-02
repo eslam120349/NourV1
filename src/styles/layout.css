@@ -114,6 +114,14 @@
     display: block;
   }
 
+  /* ✅ تعديل 1: حماية إضافية لمنع تأثير السكرول في الموبايل */
+  .navbar.is-scrolled {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    padding: 22px 0 !important;
+    border-color: transparent !important;
+  }
+
   .navbar-mobile {
     display: flex;
     flex-direction: column;
@@ -544,6 +552,11 @@
 @media (max-width: 900px) {
   .featured-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* ✅ تعديل 2: تقليل مساحة الـ overlay في الموبايل عشان النص يكون مريح أكثر */
+  .project-card-overlay {
+    padding: 20px;
   }
 }
 
