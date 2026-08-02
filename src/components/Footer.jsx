@@ -41,8 +41,9 @@ export default function Footer() {
 
         <div className="footer-col">
           <span className="footer-col-title">Contact</span>
-          <a href="tel:+20100000000">+20 10 000 0000</a>
-          <a href="mailto:hello@easygroup.com">hello@easygroup.com</a>
+          <a href="tel:+201013287002">+201013287002</a>
+          <a href="tel:+201090311995">+201090311995</a>
+          <a href="mailto:easygroupads@gmail.com">easygroupads@</a>
           <span>Cairo, Egypt</span>
         </div>
       </div>
