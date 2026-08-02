@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Sparkles, Award, Layers, Boxes } from 'lucide-react'
-import { useRef, useCallback, useEffect, useState } from 'react'
+import { useRef, useCallback, useEffect } from 'react'
 import useReveal from '../hooks/useReveal.js'
 import CropMarks from '../components/CropMarks.jsx'
 import Button from '../components/Button.jsx'
@@ -10,62 +10,68 @@ import { services } from '../data/services.js'
 import { projects } from '../data/projects.js'
 
 const whyItems = [
-  // ... (نفس البيانات السابقة)
+  {
+    icon: Sparkles,
+    title: 'Creative Solutions',
+    desc: 'Concepts developed from strategy first — never a template stretched to fit.',
+  },
+  {
+    icon: Award,
+    title: 'High Quality Production',
+    desc: 'Color-accurate presses, premium substrates and finishing done in-house.',
+  },
+  {
+    icon: Layers,
+    title: 'Professional Execution',
+    desc: 'On-time delivery from first proof to final install, every time.',
+  },
+  {
+    icon: Boxes,
+    title: 'Complete Visual Experience',
+    desc: 'Print, brand, advertise and exhibit — one team across every touchpoint.',
+  },
 ]
 
 export default function Home() {
   const light1Ref = useRef(null)
   const light2Ref = useRef(null)
+  const sectionRef = useRef(null) // مرجع للـ section عشان نحدد مكانها
   const animationRef = useRef(null)
-  const [targetPos, setTargetPos] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 })
-  const [currentPos, setCurrentPos] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 })
 
-  // دالة تحديث مستمر (loop)
-  const updateLights = useCallback(() => {
-    // إضافة حركة دورانية صغيرة (oscillation) حول الـ target
-    const time = Date.now() / 1000 // بالثواني
-    const radius = 15 // نصف قطر الحركة الدائرية
-    const speed = 0.6 // سرعة الدوران
-
-    // إزاحة دائرية
-    const offsetX = Math.sin(time * speed) * radius
-    const offsetY = Math.cos(time * speed * 0.7) * radius * 0.7 // بيضوي الشكل
-
-    // الموضع النهائي = target + offset
-    const finalX = targetPos.x + offsetX
-    const finalY = targetPos.y + offsetY
-
-    // تحديث العناصر
-    if (light1Ref.current) {
-      light1Ref.current.style.transform = `translate(${finalX - 500}px, ${finalY - 500}px)`
-    }
-    if (light2Ref.current) {
-      light2Ref.current.style.transform = `translate(${finalX - 400}px, ${finalY - 400}px)`
-    }
-
-    animationRef.current = requestAnimationFrame(updateLights)
-  }, [targetPos])
-
-  // بدء الحلقة عند تحميل المكون
-  useEffect(() => {
-    animationRef.current = requestAnimationFrame(updateLights)
-    return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current)
-    }
-  }, [updateLights])
-
-  // معالج حركة الماوس – يحدّث الـ target فقط
   const handleHeroMouseMove = useCallback((e) => {
-    setTargetPos({ x: e.clientX, y: e.clientY })
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current)
+    }
+
+    animationRef.current = requestAnimationFrame(() => {
+      // جلب مستطيل الـ section
+      const rect = sectionRef.current?.getBoundingClientRect()
+      if (!rect) return
+
+      // إحداثيات الماوس بالنسبة للـ section
+      const mouseX = e.clientX - rect.left
+      const mouseY = e.clientY - rect.top
+
+      // الضوء الأول – في نفس مكان الماوس
+      if (light1Ref.current) {
+        light1Ref.current.style.left = mouseX + 'px'
+        light1Ref.current.style.top = mouseY + 'px'
+      }
+
+      // الضوء الثاني – في نفس مكان الماوس (أو عكسي لو حبيت)
+      if (light2Ref.current) {
+        light2Ref.current.style.left = mouseX + 'px'
+        light2Ref.current.style.top = mouseY + 'px'
+      }
+    })
   }, [])
 
-  // تحديث target عند تغيير حجم الشاشة (اختياري)
   useEffect(() => {
-    const handleResize = () => {
-      setTargetPos({ x: window.innerWidth / 2, y: window.innerHeight / 2 })
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current)
+      }
     }
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   const scopeRef = useReveal([])
@@ -73,25 +79,56 @@ export default function Home() {
 
   return (
     <div ref={scopeRef}>
-      {/* خلفية الإضاءة الثابتة */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div
-          ref={light1Ref}
-          className="absolute w-[1000px] h-[1000px] rounded-full bg-red-500/40 blur-[180px] will-change-transform transition-none"
-          style={{ left: 0, top: 0 }}
-        />
-        <div
-          ref={light2Ref}
-          className="absolute w-[800px] h-[800px] rounded-full bg-red-700/30 blur-[160px] will-change-transform transition-none"
-          style={{ left: 0, top: 0 }}
-        />
-      </div>
-
       <section
+        ref={sectionRef} // ربط المرجع بالـ section
         className="hero relative overflow-hidden"
         onMouseMove={handleHeroMouseMove}
       >
         <CropMarks />
+
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* الدائرة الأولى */}
+          <div
+            ref={light1Ref}
+            className="
+              absolute
+              w-[1000px]
+              h-[1000px]
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              bg-red-500/40
+              blur-[180px]
+              will-change-transform
+            "
+            style={{
+              left: '0px',
+              top: '0px',
+              transition: 'left 0.08s ease-out, top 0.08s ease-out', // نعومة في الحركة
+            }}
+          />
+          {/* الدائرة الثانية – اختياري: لو عايزها في نفس المكان */}
+          <div
+            ref={light2Ref}
+            className="
+              absolute
+              w-[800px]
+              h-[800px]
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              bg-red-700/30
+              blur-[160px]
+              will-change-transform
+            "
+            style={{
+              left: '0px',
+              top: '0px',
+              transition: 'left 0.08s ease-out, top 0.08s ease-out',
+            }}
+          />
+        </div>
+
         <div className="container hero-grid relative z-10">
           <div className="hero-copy">
             <span className="eyebrow">Easy Group</span>
@@ -111,6 +148,7 @@ export default function Home() {
               <Button to="/contact" variant="outline">Contact Us</Button>
             </div>
           </div>
+
           <div className="hero-visual relative">
             <img
               src="https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?q=80&w=1400&auto=format&fit=crop"
@@ -123,13 +161,14 @@ export default function Home() {
             </div>
           </div>
         </div>
+
         <div className="hero-scroll absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-10">
           <span>Scroll</span>
           <span className="hero-scroll-line" />
         </div>
       </section>
 
-      {/* باقي الأقسام (نفسها) */}
+      {/* باقي الأقسام (نفسها من غير تغيير) */}
       <section className="section">
         <div className="container intro-grid">
           <div className="reveal">
