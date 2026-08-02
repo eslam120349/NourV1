@@ -31,12 +31,14 @@ export default function Navbar() {
   return (
     <header className={`navbar ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="container navbar-inner">
-        <Link to="/" className="navbar-logo" aria-label="Easy Group — home">
+        <Link to="/" className="navbar-logo" draggable="false" aria-label="Easy Group — home">
           <span className="navbar-logo-mark" aria-hidden="true">
             <span className="reg-mark" />
           </span>
           <span className="navbar-logo-text">
-            EASY<strong>GROUP</strong>
+            <div className="flex items-center gap-2.5 font-display font-extrabold text-lg">
+              <img src="/images/WhatsApp.png" draggable="false" alt="Easy Group" className="h-[40px] brightness-0 invert" />
+            </div>
           </span>
         </Link>
 
@@ -46,6 +48,7 @@ export default function Navbar() {
               key={l.to}
               to={l.to}
               end={l.to === '/'}
+              draggable="false"
               className={({ isActive }) => `navbar-link ${isActive ? 'is-active' : ''}`}
             >
               {l.label}

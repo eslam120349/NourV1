@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom'
-import { Instagram, Linkedin, Facebook } from 'lucide-react'
+import { Link } from 'react-router-dom';
+import { Instagram, Facebook } from 'lucide-react';
+import { FaTiktok } from 'react-icons/fa'; // الحل الأول
 
 export default function Footer() {
   return (
@@ -17,9 +18,9 @@ export default function Footer() {
             exhibition solutions that turn ideas into visual experiences.
           </p>
           <div className="footer-social">
-            <a href="#" aria-label="Instagram"><Instagram size={18} /></a>
-            <a href="#" aria-label="LinkedIn"><Linkedin size={18} /></a>
-            <a href="#" aria-label="Facebook"><Facebook size={18} /></a>
+            <a href="https://www.instagram.com/easygroupads/" aria-label="Instagram"><Instagram size={18} /></a>
+            <a href="https://www.tiktok.com/@easy.group4" aria-label="tiktok">  <FaTiktok size={18} /></a>
+            <a href="https://www.facebook.com/easygroupads/" aria-label="Facebook"><Facebook size={18} /></a>
           </div>
         </div>
 

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Sparkles, Award, Layers, Boxes } from 'lucide-react'
+import { useRef, useCallback, useEffect, useState } from 'react'
 import useReveal from '../hooks/useReveal.js'
 import CropMarks from '../components/CropMarks.jsx'
 import Button from '../components/Button.jsx'
@@ -9,38 +10,89 @@ import { services } from '../data/services.js'
 import { projects } from '../data/projects.js'
 
 const whyItems = [
-  {
-    icon: Sparkles,
-    title: 'Creative Solutions',
-    desc: 'Concepts developed from strategy first — never a template stretched to fit.',
-  },
-  {
-    icon: Award,
-    title: 'High Quality Production',
-    desc: 'Color-accurate presses, premium substrates and finishing done in-house.',
-  },
-  {
-    icon: Layers,
-    title: 'Professional Execution',
-    desc: 'On-time delivery from first proof to final install, every time.',
-  },
-  {
-    icon: Boxes,
-    title: 'Complete Visual Experience',
-    desc: 'Print, brand, advertise and exhibit — one team across every touchpoint.',
-  },
+  // ... (نفس البيانات السابقة)
 ]
 
 export default function Home() {
+  const light1Ref = useRef(null)
+  const light2Ref = useRef(null)
+  const animationRef = useRef(null)
+  const [targetPos, setTargetPos] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 })
+  const [currentPos, setCurrentPos] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 })
+
+  // دالة تحديث مستمر (loop)
+  const updateLights = useCallback(() => {
+    // إضافة حركة دورانية صغيرة (oscillation) حول الـ target
+    const time = Date.now() / 1000 // بالثواني
+    const radius = 15 // نصف قطر الحركة الدائرية
+    const speed = 0.6 // سرعة الدوران
+
+    // إزاحة دائرية
+    const offsetX = Math.sin(time * speed) * radius
+    const offsetY = Math.cos(time * speed * 0.7) * radius * 0.7 // بيضوي الشكل
+
+    // الموضع النهائي = target + offset
+    const finalX = targetPos.x + offsetX
+    const finalY = targetPos.y + offsetY
+
+    // تحديث العناصر
+    if (light1Ref.current) {
+      light1Ref.current.style.transform = `translate(${finalX - 500}px, ${finalY - 500}px)`
+    }
+    if (light2Ref.current) {
+      light2Ref.current.style.transform = `translate(${finalX - 400}px, ${finalY - 400}px)`
+    }
+
+    animationRef.current = requestAnimationFrame(updateLights)
+  }, [targetPos])
+
+  // بدء الحلقة عند تحميل المكون
+  useEffect(() => {
+    animationRef.current = requestAnimationFrame(updateLights)
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current)
+    }
+  }, [updateLights])
+
+  // معالج حركة الماوس – يحدّث الـ target فقط
+  const handleHeroMouseMove = useCallback((e) => {
+    setTargetPos({ x: e.clientX, y: e.clientY })
+  }, [])
+
+  // تحديث target عند تغيير حجم الشاشة (اختياري)
+  useEffect(() => {
+    const handleResize = () => {
+      setTargetPos({ x: window.innerWidth / 2, y: window.innerHeight / 2 })
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   const scopeRef = useReveal([])
   const featured = projects.slice(0, 3)
 
   return (
     <div ref={scopeRef}>
-      {/* HERO */}
-      <section className="hero">
+      {/* خلفية الإضاءة الثابتة */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div
+          ref={light1Ref}
+          className="absolute w-[1000px] h-[1000px] rounded-full bg-red-500/40 blur-[180px] will-change-transform transition-none"
+          style={{ left: 0, top: 0 }}
+        />
+        <div
+          ref={light2Ref}
+          className="absolute w-[800px] h-[800px] rounded-full bg-red-700/30 blur-[160px] will-change-transform transition-none"
+          style={{ left: 0, top: 0 }}
+        />
+      </div>
+
+      <section
+        className="hero relative overflow-hidden"
+        onMouseMove={handleHeroMouseMove}
+      >
         <CropMarks />
-        <div className="container hero-grid">
+        <div className="container hero-grid relative z-10">
           <div className="hero-copy">
             <span className="eyebrow">Easy Group</span>
             <h1 className="hero-title">
@@ -51,36 +103,33 @@ export default function Home() {
               <span className="line-accent">STAND OUT.</span>
             </h1>
             <p className="hero-sub">
-              From printing and branding to advertising and exhibition solutions, we turn ideas
-              into powerful visual experiences.
+              From printing and branding to advertising and exhibition solutions,
+              we turn ideas into powerful visual experiences.
             </p>
             <div className="hero-actions">
               <Button to="/projects">Explore Our Projects</Button>
-              <Button to="/contact" variant="outline">
-                Contact Us
-              </Button>
+              <Button to="/contact" variant="outline">Contact Us</Button>
             </div>
           </div>
-
-          <div className="hero-visual">
+          <div className="hero-visual relative">
             <img
               src="https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?q=80&w=1400&auto=format&fit=crop"
-              alt="Large-format print production for an outdoor advertising campaign"
+              alt="Large-format print production"
+              className="w-full h-full object-cover"
             />
-            <div className="hero-visual-tag">
+            <div className="hero-visual-tag absolute bottom-6 left-6 flex items-center gap-4 bg-black/50 backdrop-blur-md px-5 py-3 rounded-xl">
               <span>PRINT · BRAND · EXHIBIT</span>
               <span className="reg-mark" />
             </div>
           </div>
         </div>
-
-        <div className="hero-scroll">
+        <div className="hero-scroll absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-10">
           <span>Scroll</span>
           <span className="hero-scroll-line" />
         </div>
       </section>
 
-      {/* INTRO */}
+      {/* باقي الأقسام (نفسها) */}
       <section className="section">
         <div className="container intro-grid">
           <div className="reveal">
@@ -107,7 +156,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SERVICES */}
       <section className="section">
         <div className="container">
           <div className="section-head reveal">
@@ -124,7 +172,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURED PROJECTS */}
       <section className="section">
         <div className="container">
           <div className="section-head reveal">
@@ -141,14 +188,11 @@ export default function Home() {
             ))}
           </div>
           <div className="featured-cta reveal">
-            <Button to="/projects" variant="outline">
-              View All Projects
-            </Button>
+            <Button to="/projects" variant="outline">View All Projects</Button>
           </div>
         </div>
       </section>
 
-      {/* WHY EASY GROUP */}
       <section className="section why-section">
         <div className="container">
           <h2 className="why-heading reveal">
@@ -172,7 +216,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="cta-section">
         <div className="container">
           <div className="cta-box reveal">

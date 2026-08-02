@@ -4,8 +4,8 @@ import useReveal from '../hooks/useReveal.js'
 import Button from '../components/Button.jsx'
 
 const infoItems = [
-  { icon: Phone, title: 'Phone', value: '+20 10 000 0000' },
-  { icon: Mail, title: 'Email', value: 'hello@easygroup.com' },
+  { icon: Phone, title: 'Phone', value: '+201013287002 - +201090311995' },
+  { icon: Mail, title: 'Email', value: 'easygroupads@' },
   { icon: MapPin, title: 'Location', value: 'Cairo, Egypt' },
   { icon: Clock, title: 'Working Hours', value: 'Sun – Thu, 9:00 – 18:00' },
 ]
