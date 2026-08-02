@@ -131,13 +131,12 @@ export default function Home() {
 
         <div className="container hero-grid relative z-10">
           <div className="hero-copy">
-            <span className="eyebrow">Easy Group</span>
-            <h1 className="hero-title">
+            <h1 className="hero-title font-display">
               WE CREATE
               <br />
               BRANDS THAT
               <br />
-              <span className="line-accent">STAND OUT.</span>
+              <span className="line-accent font-display">STAND OUT.</span>
             </h1>
             <p className="hero-sub">
               From printing and branding to advertising and exhibition solutions,

@@ -38,6 +38,7 @@ export default function Navbar() {
           <span className="navbar-logo-text">
             <div className="flex items-center gap-2.5 font-display font-extrabold text-lg">
               <img src="/images/WhatsApp.png" draggable="false" alt="Easy Group" className="h-[40px] brightness-0 invert" />
+
             </div>
           </span>
         </Link>
