@@ -6,7 +6,7 @@ import Button from '../components/Button.jsx'
 const infoItems = [
   { icon: Phone, title: 'Phone', value: '+201013287002 - +201090311995' },
   { icon: Mail, title: 'Email', value: 'easygroupads@' },
-  { icon: MapPin, title: 'Location', value: 'Cairo, Egypt' },
+  { icon: MapPin, title: 'Location', value: '7964,street 9 beside ezz el din pharmacy el mokattam Cairo Egypt' },
   { icon: Clock, title: 'Working Hours', value: 'Sun – Thu, 9:00 – 18:00' },
 ]
 
@@ -114,7 +114,7 @@ export default function Contact() {
           />
           <div className="map-pin">
             <span className="map-pin-dot" />
-            <span className="map-pin-label">Easy Group Studio — Cairo, Egypt</span>
+            <span className="map-pin-label">Easy Group Studio — 7964,street 9 beside ezz el din pharmacy el mokattam Cairo Egypt</span>
           </div>
         </div>
       </div>
