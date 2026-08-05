@@ -7,7 +7,7 @@ const infoItems = [
   { icon: Phone, title: 'Phone', value: '+201013287002 - +201090311995' },
   { icon: Mail, title: 'Email', value: 'easygroupads@' },
   { icon: MapPin, title: 'Location', value: '7964,street 9 beside ezz el din pharmacy el mokattam Cairo Egypt' },
-  { icon: Clock, title: 'Working Hours', value: 'Sun – Thu, 9:00 – 18:00' },
+  { icon: Clock, title: 'Working Hours', value: 'every day, 10:00 am – 11:00 pm' },
 ]
 
 export default function Contact() {
