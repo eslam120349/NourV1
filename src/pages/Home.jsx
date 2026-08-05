@@ -231,6 +231,7 @@ export default function Home() {
         </div>
       </section>
 
+
       <section className="section why-section">
         <div className="container">
           <h2 className="why-heading reveal">
@@ -253,7 +254,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section className="cta-section">
         <div className="container">
           <div className="cta-box reveal">
