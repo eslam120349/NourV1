@@ -242,14 +242,14 @@ export const projects = [
   {
     id: 'give_away',
     title: 'give away',
-    category: 'give away',
+    category: 'company service',
     size: 'sm',
     image:
       'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
   }, {
     id: 'summer_give_away',
     title: 'summer give away',
-    category: 'give away',
+    category: 'company service',
     size: 'sm',
     image:
       'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
@@ -257,11 +257,11 @@ export const projects = [
   {
     id: 'printing_on_give_away',
     title: 'printing on give away',
-    category: 'give away',
+    category: 'company service',
     size: 'sm',
     image:
       'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
   },
 ]
 
-export const categories = ['All', 'Branding', 'Printing', 'Advertising', 'Exhibitions', 'give away']
+export const categories = ['All', 'Branding', 'Printing', 'Advertising', 'Exhibitions', 'company service']
