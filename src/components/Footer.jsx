@@ -7,11 +7,8 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer-top">
         <div className="footer-brand">
-          <Link to="/" className="navbar-logo">
-            <span className="reg-mark" />
-            <span className="navbar-logo-text">
-              EASY<strong>GROUP</strong>
-            </span>
+          <Link to="/" draggable="false" className="navbar-logo">
+            <img src="/images/WhatsApp.png" draggable="false" alt="Easy Group" className="h-[40px] brightness-0 invert" />
           </Link>
           <p className="text-mist footer-desc">
             A full-service creative production house — printing, branding, advertising and
