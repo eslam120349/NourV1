@@ -47,7 +47,7 @@ export default function Footer() {
 
       <div className="container footer-bottom">
         <span>© 2026 Easy Group. All Rights Reserved.</span>
-        <span className="footer-spec">PRINT · BRAND · ADVERTISE · EXHIBIT</span>
+        <span className="footer-spec">we design . we print . we grow</span>
       </div>
     </footer>
   )
