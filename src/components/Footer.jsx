@@ -30,17 +30,16 @@ export default function Footer() {
 
         <div className="footer-col">
           <span className="footer-col-title">Services</span>
-          <span>Printing Solutions</span>
-          <span>Branding &amp; Identity</span>
-          <span>Advertising &amp; Outdoor</span>
-          <span>Exhibition &amp; Events</span>
+          <span>design</span>
+          <span>print</span>
+          <span>Advertise</span>
         </div>
 
         <div className="footer-col">
           <span className="footer-col-title">Contact</span>
           <a href="tel:+201013287002">+201013287002</a>
           <a href="tel:+201090311995">+201090311995 </a>
-          <a href="mailto:easygroupads@gmail.com">easygroupads@</a>
+          <a href="mailto:easygroupads@gmail.com">easygroupads@gmail.com</a>
           <span>7964,street 9 beside ezz el din pharmacy el mokattam Cairo Egypt</span>
         </div>
       </div>
