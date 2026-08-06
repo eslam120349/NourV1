@@ -8,12 +8,12 @@ export const projects = [
       'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1600&auto=format&fit=crop',
   },
   {
-    id: 'largeformat-citywrap',
-    title: 'Metro Line City Wrap',
+    id: 'social_media_management',
+    title: 'Social Media Management',
     category: 'Advertising',
     size: 'md',
     image:
-      'https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?q=80&w=1400&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
   },
   {
     id: 'techexpo-booth',
@@ -32,12 +32,12 @@ export const projects = [
       'https://images.unsplash.com/photo-1607435097405-db48f8ab21e4?q=80&w=1200&auto=format&fit=crop',
   },
   {
-    id: 'skyline-billboard',
-    title: 'Skyline Launch Billboard',
+    id: 'social_media_strategy',
+    title: 'Social Media Strategy',
     category: 'Advertising',
     size: 'md',
     image:
-      'https://images.unsplash.com/photo-1567016376408-0226e4d0c1ea?q=80&w=1400&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
   },
   {
     id: 'summit-conference',
@@ -224,7 +224,21 @@ export const projects = [
     size: 'sm',
     image:
       'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  }, {
+    id: 'internet_campaign',
+    title: 'internet campaign',
+    category: 'Advertising',
+    size: 'md',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  }, {
+    id: 'outdoor&indoor_printing',
+    title: 'outdoor & indoor printing',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
   },
 ]
 
-export const categories = ['All', 'Branding', 'Printing', 'Advertising', 'Exhibitions']
+export const categories = ['All', 'Branding', 'Printing', 'Advertising', 'Exhibitions', 'give away']
