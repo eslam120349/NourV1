@@ -71,6 +71,160 @@ export const projects = [
     image:
       'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
   },
+  {
+    id: 'Sublimation-Printing',
+    title: 'Sublimation Printing',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  }, {
+    id: 'Offset_Print',
+    title: 'Offset Print',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'Direct_to_Garment',
+    title: 'Direct to Garment',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  }, {
+    id: 'PuFF_Print',
+    title: 'PuFF Print',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  }, {
+    id: 'Vinyl-Print',
+    title: 'Vinyl Print',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  }, {
+    id: 'product_print',
+    title: 'product print',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  }, {
+    id: 'package_print',
+    title: 'package print',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'stikersprint',
+    title: 'stikers print',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'Banner',
+    title: 'Banner',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'Flex',
+    title: 'Flex',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'Vinyl',
+    title: 'Vinyl',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'Seethrough',
+    title: 'Seethrough',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  }, {
+    id: 'transparent_vinyl',
+    title: 'transparent vinyl',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'Print_and_Cut',
+    title: 'Print and Cut',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'Car_Vinyl',
+    title: 'Car Vinyl',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'Acrylic_Sign',
+    title: 'Acrylic Sign',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'Canvas',
+    title: 'Canvas',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'Mash',
+    title: 'Mash',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'Block_out',
+    title: 'Block out',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'Wallpaper',
+    title: 'Wallpaper',
+    category: 'Printing',
+    size: 'sm',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?q=80&w=1200&auto=format&fit=crop',
+  },
 ]
 
 export const categories = ['All', 'Branding', 'Printing', 'Advertising', 'Exhibitions']
